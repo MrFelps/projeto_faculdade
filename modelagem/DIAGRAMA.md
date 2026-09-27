@@ -1,10 +1,4 @@
-# 📐 Modelagem do Sistema RH PontoCerto
-
-Este documento contém o Diagrama de Classes UML do sistema **RH PontoCerto**, especificando todos os atributos, métodos, visibilidades, multiplicidades e tipos de relacionamentos.
-
----
-
-## 📊 Diagrama de Classes UML (Mermaid)
+# Diagrama de Classes
 
 ```mermaid
 classDiagram
@@ -85,23 +79,10 @@ classDiagram
         AJUSTADO
     }
 
-    Colaborador <|-- ColaboradorCLT : Herança (é um)
-    Colaborador <|-- ColaboradorEstagiario : Herança (é um)
-    Colaborador "1" *-- "*" RegistroPonto : Composição ◆
-    Departamento "1" o-- "*" Colaborador : Agregação ◇
-    Colaborador "*" --> "1" Cargo : Associação
-    RegistroPonto --> StatusPonto : Associação
+    Colaborador <|-- ColaboradorCLT
+    Colaborador <|-- ColaboradorEstagiario
+    Colaborador "1" *-- "*" RegistroPonto
+    Departamento "1" o-- "*" Colaborador
+    Colaborador "*" --> "1" Cargo
+    RegistroPonto --> StatusPonto
 ```
-
----
-
-## 📌 Guia de Leitura dos Relacionamentos
-
-- **Herança (`──▷` / `<|--`)**: `ColaboradorCLT` e `ColaboradorEstagiario` herdam de `Colaborador`.
-- **Composição (`◆` / `*--`)**: `Colaborador` compõe `RegistroPonto`. O registro de ponto não existe sem o colaborador proprietário.
-- **Agregação (`◇` / `o--`)**: `Departamento` agrega `Colaborador`. Se o departamento for extinto, os colaboradores continuam existindo.
-- **Associação (`-->`)**: `Colaborador` referencia seu `Cargo` e `RegistroPonto` referencia `StatusPonto`.
-- **Visibilidade**:
-  - `-` = Privado (`private`)
-  - `+` = Público (`public`)
-  - `*` = Método Abstrato (`abstract`)
